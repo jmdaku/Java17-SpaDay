@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8" />
     <title>Spa Menu</title>
@@ -8,8 +8,30 @@
 <body>
 <h1>My Super Fancy Spa</h1>
 <div id = "clientProfile">
+    <h2 th:text= My profile> </h2>
+    <p th:text= ${client.name}"></p>
+    <p th:text= "${client.skinType}"></p>
+    <p th:text= "${client.manipedi}"></p>
 </div>
 <div id = "servicesMenu">
+    <th:block>
+    <table>
+        <thead>
+        <tr>
+            <th>Services</th>
+        </tr>
+        </thead>
+        <tr th:each="appropriateFacial : ${appropriateFacials}">
+            <td th:text="${appropriateFacial}"></td>
+        </tr>
+    </table>
+    </th:block>
+    <div>
+        <h3 th:if="${manipedi == manicure}" th:text = "Manicure"></h3>
+            <p th:replace="~{fragments :: manicureDescription}"></p>
+        <h3 th:if="${manipedi == pedicure}" th:text = "Pedicure"></h3>
+        <p th:replace="~{fragments :: pedicureDescription}"></p>
+    </div>
 </div>
 </body>
 </html>
